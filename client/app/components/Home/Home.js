@@ -1,89 +1,89 @@
-import React, { Component } from 'react';
-import 'whatwg-fetch';
+import React, { Component } from 'react'
+import 'whatwg-fetch'
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       counters: []
-    };
+    }
 
-    this.newCounter = this.newCounter.bind(this);
-    this.incrementCounter = this.incrementCounter.bind(this);
-    this.decrementCounter = this.decrementCounter.bind(this);
-    this.deleteCounter = this.deleteCounter.bind(this);
+    this.newCounter = this.newCounter.bind(this)
+    this.incrementCounter = this.incrementCounter.bind(this)
+    this.decrementCounter = this.decrementCounter.bind(this)
+    this.deleteCounter = this.deleteCounter.bind(this)
 
-    this._modifyCounter = this._modifyCounter.bind(this);
+    this._modifyCounter = this._modifyCounter.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch('/api/counters')
       .then(res => res.json())
       .then(json => {
         this.setState({
           counters: json
-        });
-      });
+        })
+      })
   }
 
-  newCounter() {
+  newCounter () {
     fetch('/api/counters', { method: 'POST' })
       .then(res => res.json())
       .then(json => {
-        let data = this.state.counters;
-        data.push(json);
+        let data = this.state.counters
+        data.push(json)
 
         this.setState({
           counters: data
-        });
-      });
+        })
+      })
   }
 
-  incrementCounter(index) {
-    const id = this.state.counters[index]._id;
+  incrementCounter (index) {
+    const id = this.state.counters[index]._id
 
     fetch(`/api/counters/${id}/increment`, { method: 'PUT' })
       .then(res => res.json())
       .then(json => {
-        this._modifyCounter(index, json);
-      });
+        this._modifyCounter(index, json)
+      })
   }
 
-  decrementCounter(index) {
-    const id = this.state.counters[index]._id;
+  decrementCounter (index) {
+    const id = this.state.counters[index]._id
 
     fetch(`/api/counters/${id}/decrement`, { method: 'PUT' })
       .then(res => res.json())
       .then(json => {
-        this._modifyCounter(index, json);
-      });
+        this._modifyCounter(index, json)
+      })
   }
 
-  deleteCounter(index) {
-    const id = this.state.counters[index]._id;
+  deleteCounter (index) {
+    const id = this.state.counters[index]._id
 
     fetch(`/api/counters/${id}`, { method: 'DELETE' })
       .then(_ => {
-        this._modifyCounter(index, null);
-      });
+        this._modifyCounter(index, null)
+      })
   }
 
-  _modifyCounter(index, data) {
-    let prevData = this.state.counters;
+  _modifyCounter (index, data) {
+    let prevData = this.state.counters
 
     if (data) {
-      prevData[index] = data;
+      prevData[index] = data
     } else {
-      prevData.splice(index, 1);
+      prevData.splice(index, 1)
     }
 
     this.setState({
       counters: prevData
-    });
+    })
   }
 
-  render() {
+  render () {
     return (
       <>
         <p>Counters:</p>
@@ -101,8 +101,8 @@ class Home extends Component {
 
         <button onClick={this.newCounter}>New counter</button>
       </>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
 
-const commonConfig = require('./webpack.common');
+const commonConfig = require('./webpack.common')
 
 module.exports = merge(commonConfig, {
   devtool: 'eval-source-map',
@@ -24,4 +24,4 @@ module.exports = merge(commonConfig, {
     historyApiFallback: true,
     stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
   }
-});
+})

@@ -1,25 +1,60 @@
 import React from 'react'
-
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import { Link } from 'react-router-dom'
 
-const Header = () => (
-  <header>
-    <Link to='/'>Home</Link>
+import {
+  Paper,
+  Typography,
+  TextField,
+  Button
+} from '@material-ui/core'
 
-    <nav>
-      <Link to='/helloworld'>Hello World</Link>
-    </nav>
+import { withStyles } from '@material-ui/core/styles'
 
-    <nav>
-      <Link to='/hikes'>My hikes</Link>
-    </nav>
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  input: {
+    display: 'none'
+  }
+})
 
-    <nav>
-      <Link to='/addhike'>Add hike</Link>
-    </nav>
+const Header = () => {
+  return (
+    <div>
+      <AppBar position='static'>
+        <Toolbar>
+          <Typography variant='title' color='inherit'>
 
-    <hr />
-  </header>
-)
+            <span style={{ padding: '20px' }}>
+              <Button
+                color='yellow'
+                variant='contained'
+              >
+                <Link to='/hikes'>
+                My hikes
+                </Link>
+              </Button>
+            </span>
 
+            <span style={{ padding: '20px' }}>
+              <Button
+                type='submit'
+                color=''
+                variant='contained'
+              >
+                <Link to='/addhike'>
+                Add hike
+                </Link>
+              </Button>
+            </span>
+
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
+}
 export default Header

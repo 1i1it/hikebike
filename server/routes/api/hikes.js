@@ -9,9 +9,9 @@ module.exports = (app) => {
   })
 
   app.post('/api/hike', function (req, res, next) {
-    const { description } = req.body
-    console.log('hikeDetails', req.body)
-    const hike = new Hike({ description })
+    const { newHike } = req.body
+    console.log('hikeDetails', newHike)
+    const hike = new Hike(newHike)
 
     hike.save()
       .then(() => res.json(hike))

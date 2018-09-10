@@ -16,6 +16,10 @@ const HikeSchema = new mongoose.Schema({
   joining: {
     type: Array,
     default: ''
+  },
+  name: {
+    type: String,
+    default: ''
   }
 })
 

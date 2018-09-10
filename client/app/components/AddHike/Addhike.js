@@ -2,32 +2,50 @@ import React from 'react'
 import 'whatwg-fetch'
 import PropTypes from 'prop-types'
 
+import {
+  Paper,
+  Typography,
+  TextField,
+  Button
+} from '@material-ui/core'
+
 export default class AddHike extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: ''
+      newHike: {
+        description: '',
+        name: '',
+        admin: '' }
     }
   }
 
   static propTypes = {
   }
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value })
+  handleInput = (e) => {
+    let value = e.target.value
+    let name = e.target.name
+    this.setState(prevState => {
+      return {
+        newHike: {
+          ...prevState.newHike, [name]: value
+        }
+      }
+    }, () => console.log(this.state.newHike)
+    )
   }
 
   handleSubmit = (event) => {
-    // alert('A name was submitted: ' + this.state.value);
-
-    this.handleAddHike(this.state.value)
+    alert('A newHike was submitted: ' + this.state.newHike)
+    this.handleAddHike(this.state.newHike)
     event.preventDefault()
   }
 
-  handleAddHike = (hikeDetails) => {
+  handleAddHike = (newHike) => {
     fetch('/api/hike', {
       method: 'POST',
-      body: JSON.stringify({ description: hikeDetails }),
+      body: JSON.stringify({ newHike }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -40,14 +58,45 @@ export default class AddHike extends React.Component {
   }
 
   render () {
+    const { description, name, admin } = this.state.newHike
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Description:
-          <input type='text' value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
+
+      <Paper>
+        <form onSubmit={this.handleSubmit}>
+          <TextField
+            name='description'
+            label='Description'
+            value={description}
+            onChange={this.handleInput}
+            margin='normal'
+          />
+
+          <TextField
+            name='name'
+            label='Name'
+            value={name}
+            onChange={this.handleInput}
+            margin='normal'
+          />
+
+          <TextField
+            name='admin'
+            label='Admin'
+            value={admin}
+            onChange={this.handleInput}
+            margin='normal'
+          />
+
+          <Button
+            type='submit'
+            color='primary'
+            variant='raised'
+          >
+          Add hike
+          </Button>
+        </form>
+      </Paper>
+
     )
   }
 }

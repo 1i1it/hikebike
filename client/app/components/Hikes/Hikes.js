@@ -29,7 +29,9 @@ export default class Hikes extends Component {
     const hikes = this.state.hikes.map((hike, index) => {
       return (
         <li key={index}>
-          <Hike description={hike.description} />
+          <Hike name={hike.name}
+            description={hike.description}
+            admin={hike.admin} />
         </li>)
     })
 

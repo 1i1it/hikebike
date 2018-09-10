@@ -6,24 +6,30 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Delete } from '@material-ui/icons'
+import {
+  IconButton
+} from '@material-ui/core'
+
+import img from '../../../public/assets/img/bike.png'
 
 const Hike = (props) => {
-  const { name, description, admin } = props.hike
+  const { name, description, admin, handleDelete } = props.hike
+  console.log('props.hike', props.hike)
 
   return (
     <div>
       { props.hike ? (
         <Card >
-          <CardMedia style={{ height: 0, paddingTop: '56.25%' }}
-            image={'https://www.google.co.il/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiKs9LgtrDdAhWH_qQKHc34CLUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.kivohotel.com%2Fhike-bike-run%2F&psig=AOvVaw2Bp7Z2B6TJUuvQTYn0xN2w&ust=1536668591890773'}
+          <CardMedia style={{ height: 0, paddingTop: '56.25%', marginTop: '30' }}
+            image={img}
             title={name}
           />
           <CardContent>
             <Typography gutterBottom variant='headline' component='h2'>
-              {admin}
+              {description || 'Awesome hike'}
             </Typography>
             <Typography component='p'>
-              {description}
+              Hike admin {admin}
             </Typography>
 
           </CardContent>
@@ -31,6 +37,10 @@ const Hike = (props) => {
             <Button size='small' color='primary' href={'https://google.com'} target='_blank'>
               Go To Hike
             </Button>
+
+            <IconButton color='primary' onClick={() => handleDelete(name)}>
+              <Delete />
+            </IconButton>
           </CardActions>
         </Card>
       ) : null }

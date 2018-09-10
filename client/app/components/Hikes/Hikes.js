@@ -53,6 +53,17 @@ export default class Hikes extends Component {
     // this.getCourses()
   }
 
+  handleDeleteHike = (id) => {
+    console.log("_id ", id)
+    fetch(`/api/hike/${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(json => {
+        console.log('json', json)
+      })
+  }
+
   render () {
     return (
       <div>
@@ -66,7 +77,7 @@ export default class Hikes extends Component {
             <Grid container spacing={24} style={{ padding: 24 }}>
               { this.state.hikes.map((currentHike, index) => (
                 <Grid key={index} item xs={12} sm={6} lg={3} xl={3}>
-                  <Hike hike={currentHike} />
+                  <Hike hike={currentHike} handleDelete={this.handleDeleteHike} />
                 </Grid>
               ))}
             </Grid>

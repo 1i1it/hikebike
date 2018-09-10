@@ -13,9 +13,7 @@ import {
 import img from '../../../public/assets/img/bike.png'
 
 const Hike = (props) => {
-  const { name, description, admin, handleDelete } = props.hike
-  console.log('props.hike', props.hike)
-
+  const { name, description, admin, _id } = props.hike
   return (
     <div>
       { props.hike ? (
@@ -29,7 +27,7 @@ const Hike = (props) => {
               {description || 'Awesome hike'}
             </Typography>
             <Typography component='p'>
-              Hike admin {admin}
+              <span style={{ fontWeight: "bold"}}> Hike admin:</span>  {admin}
             </Typography>
 
           </CardContent>
@@ -38,7 +36,7 @@ const Hike = (props) => {
               Go To Hike
             </Button>
 
-            <IconButton color='primary' onClick={() => handleDelete(name)}>
+            <IconButton style={{ padding: '10px'}} color='primary' onClick={() => props.handleDelete(_id)}>
               <Delete />
             </IconButton>
           </CardActions>

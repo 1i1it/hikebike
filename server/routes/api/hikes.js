@@ -17,4 +17,12 @@ module.exports = (app) => {
       .then(() => res.json(hike))
       .catch((err) => next(err))
   })
+
+  app.delete('/api/hike/:id', function (req, res, next) {
+    Hike.findOneAndDelete({ _id: req.params.id })
+      .exec()
+      .then((result) => res.json(result))
+      .catch((err) => next(err))
+  })
+
 }

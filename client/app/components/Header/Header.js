@@ -30,7 +30,7 @@ const Header = () => {
 
             <span style={{ padding: '20px' }}>
               <Button
-                color='yellow'
+                color='secondary'
                 variant='contained'
               >
                 <Link to='/hikes'>
@@ -42,7 +42,7 @@ const Header = () => {
             <span style={{ padding: '20px' }}>
               <Button
                 type='submit'
-                color=''
+                color='secondary'
                 variant='contained'
               >
                 <Link to='/addhike'>

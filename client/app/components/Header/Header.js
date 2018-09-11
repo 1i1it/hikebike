@@ -19,7 +19,11 @@ const styles = theme => ({
   }
 })
 
-const Header = () => {
+const Header = (props) => {
+
+  const AllHikesLink = props => <Link to={`/hikes`} {...props}/>
+  const AddHikeLink = props => <Link to={`/addhike`} {...props}/>
+
   return (
     <div>
       <AppBar position='static'>
@@ -27,25 +31,18 @@ const Header = () => {
           <Typography variant='title' color='inherit'>
 
             <span style={{ padding: '20px' }}>
-              <Button
+              <Button component={AllHikesLink}
                 color='secondary'
-                variant='contained'
-              >
-                <Link to='/hikes'>
+                variant='raised'>
                 My hikes
-                </Link>
               </Button>
             </span>
 
             <span style={{ padding: '20px' }}>
-              <Button
-                type='submit'
+              <Button component={AddHikeLink}
                 color='secondary'
-                variant='contained'
-              >
-                <Link to='/addhike'>
+                variant='raised'>
                 Add hike
-                </Link>
               </Button>
             </span>
 

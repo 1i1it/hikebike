@@ -15,6 +15,9 @@ import img from '../../../public/assets/img/bike.png'
 
 const Hike = (props) => {
   const { name, description, admin, _id } = props.hike
+  const HikeDetailsLink = props => <Link to={`/hike/${_id}`} {...props} />
+
+
   return (
     <div>
       { props.hike ? (
@@ -33,10 +36,8 @@ const Hike = (props) => {
 
           </CardContent>
           <CardActions>
-            <Button size='small' color='primary'   target='_blank'>
-              <Link to={`/hike/${_id}`}>
-                Go To Hike
-              </Link>
+            <Button component={HikeDetailsLink} color='primary'>
+             Details
             </Button>
             <IconButton style={{position: "absolute", right: 10}} color='primary' onClick={() => props.handleDelete(_id)}>
               <Delete />

@@ -41,7 +41,6 @@ render((
       <App>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/helloworld' component={HelloWorld} />
           <Route path='/hikes' component={Hikes} />
           <Route path='/addhike' component={AddHike} />
           <Route path="/hike/:id" component={HikeDetails} />

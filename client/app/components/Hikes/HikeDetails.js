@@ -29,7 +29,7 @@ export default class HikeDetails extends Component {
 
   render () {
     return (
-      <div>
+      <div className={"hike-details"}>
         {this.state.hike.description}
         {this.state.hike.name}
       </div>

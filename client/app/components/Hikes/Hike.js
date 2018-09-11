@@ -34,6 +34,10 @@ const Hike = (props) => {
               <span style={{ fontWeight: "bold"}}> Hike admin:</span>  {admin}
             </Typography>
 
+            <Typography style={{ paddingTop: 10}} component='p'>
+              {description}
+            </Typography>
+
           </CardContent>
           <CardActions>
             <Button component={HikeDetailsLink} color='primary'>

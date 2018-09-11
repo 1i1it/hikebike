@@ -16,22 +16,21 @@ import Home from './components/Home/Home'
 import HelloWorld from './components/HelloWorld/HelloWorld'
 import Hikes from './components/Hikes/Hikes'
 import AddHike from './components/AddHike/Addhike'
-
+import HikeDetails from './components/Hikes/HikeDetails'
 import './styles/styles.scss'
 import { orange } from '@material-ui/core/colors'
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 
+
 const theme = createMuiTheme({
   palette: {
     secondary: {
       light: orange[200],
-      main: '#ff8a65',
-      contrastText: 'rgb(0,0,0)'
+      main: '#ff8a65'
     },
     primary: {
-      main: '#80cbc4',
-      contrastText: 'rgb(0,0,0)'
+      main: '#80cbc4'
     }
   }
 })
@@ -45,6 +44,7 @@ render((
           <Route path='/helloworld' component={HelloWorld} />
           <Route path='/hikes' component={Hikes} />
           <Route path='/addhike' component={AddHike} />
+          <Route path="/hike/:id" component={HikeDetails} />
           <Route component={NotFound} />
         </Switch>
       </App>

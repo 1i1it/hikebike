@@ -15,11 +15,15 @@ export default class Hikes extends Component {
   }
 
   componentDidMount () {
+   this.getAllHikes()
+  }
+
+  getAllHikes = () => {
     fetch('/api/hikes')
       .then(res => res.json())
-      .then(json => {
+      .then(hikes => {
         this.setState({
-          hikes: json
+          hikes
         })
       })
       .catch((err) => {
@@ -28,39 +32,43 @@ export default class Hikes extends Component {
       })
   }
 
-  // getCourses = () => {
-  //   client.getEntries({
-  //     content_type: 'course',
-  //     query: this.state.searchString
-  //   })
-  //     .then((response) => {
-  //       this.setState({courses: response.items})
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error occured while fetching data")
-  //       console.log(error)
-  //     })
-  // }
-  //
-  //
+
+  getHikesBySearchTerm = (searchTerm) => {
+    fetch(`/api/hikes/${searchTerm}`)
+      .then(res => res.json())
+      .then(hikes => {
+        this.setState({
+          hikes
+        })
+      })
+      .catch((err) => {
+        console.error('Failed to fetch: ', err)
+        return {}
+      })
+  }
+
+
   onSearchInputChange = (event) => {
-    console.log('search', event.target.value)
-    // if (event.target.value) {
-    //   this.setState({searchString: event.target.value})
-    // } else {
-    //   this.setState({searchString: ''})
-    // }
-    // this.getCourses()
+    const searchString = event.target.value
+    if (searchString && searchString.length > 2) {
+      this.getHikesBySearchTerm(searchString)
+    }
+
+    else {
+      this.getAllHikes()
+    }
   }
 
   handleDeleteHike = (id) => {
-    console.log("_id ", id)
+
     fetch(`/api/hike/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
-      .then(json => {
-        console.log('json', json)
+      .then(hikes => {
+        this.setState({
+          hikes
+        })
       })
   }
 
@@ -76,7 +84,7 @@ export default class Hikes extends Component {
               onChange={this.onSearchInputChange} />
             <Grid container spacing={24} style={{ padding: 24 }}>
               { this.state.hikes.map((currentHike, index) => (
-                <Grid key={index} item xs={12} sm={6} lg={3} xl={3}>
+                <Grid key={index} item xs={12} sm={6} lg={2} xl={2}>
                   <Hike hike={currentHike} handleDelete={this.handleDeleteHike} />
                 </Grid>
               ))}

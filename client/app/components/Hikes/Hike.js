@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Delete } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 import {
   IconButton
 } from '@material-ui/core'
@@ -17,7 +18,7 @@ const Hike = (props) => {
   return (
     <div>
       { props.hike ? (
-        <Card >
+        <Card style={{ position: "relative"}}>
           <CardMedia style={{ height: 0, paddingTop: '56.25%', marginTop: '30' }}
             image={img}
             title={name}
@@ -32,11 +33,12 @@ const Hike = (props) => {
 
           </CardContent>
           <CardActions>
-            <Button size='small' color='primary' href={'https://google.com'} target='_blank'>
-              Go To Hike
+            <Button size='small' color='primary'   target='_blank'>
+              <Link to={`/hike/${_id}`}>
+                Go To Hike
+              </Link>
             </Button>
-
-            <IconButton style={{ padding: '10px'}} color='primary' onClick={() => props.handleDelete(_id)}>
+            <IconButton style={{position: "absolute", right: 10}} color='primary' onClick={() => props.handleDelete(_id)}>
               <Delete />
             </IconButton>
           </CardActions>

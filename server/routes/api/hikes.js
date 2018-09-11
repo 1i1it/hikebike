@@ -21,7 +21,27 @@ module.exports = (app) => {
   app.delete('/api/hike/:id', function (req, res, next) {
     Hike.findOneAndDelete({ _id: req.params.id })
       .exec()
-      .then((result) => res.json(result))
+      .then(
+        Hike.find()
+          .exec()
+          .then((hikes) => res.json(hikes))
+      )
+      .catch((err) => next(err))
+  })
+
+  app.get('/api/hikes/:searchTerm', (req, res, next) => {
+    console.log("req.searchTerm", req.params)
+    Hike.find({$text: {$search: req.params.searchTerm}})
+      .exec()
+      .then((hikes) => res.json(hikes))
+      .catch((err) => next(err))
+  })
+
+
+  app.get('/api/hike/:id', function (req, res, next) {
+    Hike.findById({ _id: req.params.id })
+      .exec()
+      .then((hikes) => res.json(hikes))
       .catch((err) => next(err))
   })
 

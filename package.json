@@ -1,11 +1,11 @@
 {
-  "name": "MERN-boilerplate",
+  "name": "hikeNbike",
   "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
-  "author": "Eugene Cheung",
+  "description": "Web App for finding hiking/biking partners (MERN stack)",
+  "author": "1i1it",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "https://github.com/1i1it/hikebike"
   },
   "license": "MIT",
   "private": true,

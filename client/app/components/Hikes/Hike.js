@@ -17,11 +17,10 @@ const Hike = (props) => {
   const { name, description, admin, _id } = props.hike
   const HikeDetailsLink = props => <Link to={`/hike/${_id}`} {...props} />
 
-
   return (
     <div>
       { props.hike ? (
-        <Card style={{ position: "relative"}}>
+        <Card style={{ position: 'relative' }}>
           <CardMedia style={{ height: 0, paddingTop: '56.25%', marginTop: '30' }}
             image={img}
             title={name}
@@ -31,10 +30,10 @@ const Hike = (props) => {
               {description || 'Awesome hike'}
             </Typography>
             <Typography component='p'>
-              <span style={{ fontWeight: "bold"}}> Hike admin:</span>  {admin}
+              <span style={{ fontWeight: 'bold' }}> Hike admin:</span>  {admin}
             </Typography>
 
-            <Typography style={{ paddingTop: 10}} component='p'>
+            <Typography style={{ paddingTop: 10 }} component='p'>
               {description}
             </Typography>
 
@@ -43,7 +42,7 @@ const Hike = (props) => {
             <Button component={HikeDetailsLink} color='primary'>
              Details
             </Button>
-            <IconButton style={{position: "absolute", right: 10}} color='primary' onClick={() => props.handleDelete(_id)}>
+            <IconButton style={{ position: 'absolute', right: 10 }} color='primary' onClick={() => props.handleDelete(_id)}>
               <Delete />
             </IconButton>
           </CardActions>

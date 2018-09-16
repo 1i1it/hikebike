@@ -15,7 +15,7 @@ export default class Hikes extends Component {
   }
 
   componentDidMount () {
-   this.getAllHikes()
+    this.getAllHikes()
   }
 
   getAllHikes = () => {
@@ -32,7 +32,6 @@ export default class Hikes extends Component {
       })
   }
 
-
   getHikesBySearchTerm = (searchTerm) => {
     fetch(`/api/hikes/${searchTerm}`)
       .then(res => res.json())
@@ -47,22 +46,18 @@ export default class Hikes extends Component {
       })
   }
 
-
   onSearchInputChange = (event) => {
     const searchString = event.target.value
     if (searchString && searchString.length > 2) {
       this.getHikesBySearchTerm(searchString)
-    }
-
-    else {
+    } else {
       this.getAllHikes()
     }
   }
 
   handleDeleteHike = (id) => {
-
     fetch(`/api/hike/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
       .then(res => res.json())
       .then(hikes => {

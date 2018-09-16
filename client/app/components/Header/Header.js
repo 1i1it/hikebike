@@ -20,9 +20,8 @@ const styles = theme => ({
 })
 
 const Header = (props) => {
-
-  const AllHikesLink = props => <Link to={`/hikes`} {...props}/>
-  const AddHikeLink = props => <Link to={`/addhike`} {...props}/>
+  const AllHikesLink = props => <Link to={`/hikes`} {...props} />
+  const AddHikeLink = props => <Link to={`/addhike`} {...props} />
 
   return (
     <div>

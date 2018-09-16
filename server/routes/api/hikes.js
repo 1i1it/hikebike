@@ -30,13 +30,12 @@ module.exports = (app) => {
   })
 
   app.get('/api/hikes/:searchTerm', (req, res, next) => {
-    console.log("req.searchTerm", req.params)
-    Hike.find({$text: {$search: req.params.searchTerm}})
+    console.log('req.searchTerm', req.params)
+    Hike.find({ $text: { $search: req.params.searchTerm } })
       .exec()
       .then((hikes) => res.json(hikes))
       .catch((err) => next(err))
   })
-
 
   app.get('/api/hike/:id', function (req, res, next) {
     Hike.findById({ _id: req.params.id })
@@ -44,5 +43,4 @@ module.exports = (app) => {
       .then((hikes) => res.json(hikes))
       .catch((err) => next(err))
   })
-
 }

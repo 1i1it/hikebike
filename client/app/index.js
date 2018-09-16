@@ -22,7 +22,6 @@ import { orange } from '@material-ui/core/colors'
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 
-
 const theme = createMuiTheme({
   palette: {
     secondary: {
@@ -43,7 +42,7 @@ render((
           <Route exact path='/' component={Home} />
           <Route path='/hikes' component={Hikes} />
           <Route path='/addhike' component={AddHike} />
-          <Route path="/hike/:id" component={HikeDetails} />
+          <Route path='/hike/:id' component={HikeDetails} />
           <Route component={NotFound} />
         </Switch>
       </App>

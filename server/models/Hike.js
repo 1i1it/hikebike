@@ -23,7 +23,7 @@ const HikeSchema = new mongoose.Schema({
   }
 })
 
-HikeSchema.index({'$**': 'text'});
+HikeSchema.index({ '$**': 'text' })
 
 // [{ type : ObjectId, ref: 'User' }], maybe this for user??
 

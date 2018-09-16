@@ -62,56 +62,56 @@ export default class AddHike extends React.Component {
     const { description, name, admin } = this.state.newHike
     return (
 
-      <div className={"add-hike"}>
-      <Paper>
-        <div className={"add-hike-form-wrapper"}>
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            hintText="Enter hike description"
-            errorText="This field is required"
-            error={!description}
-            hint={!description}
-            name='description'
-            label='Description'
-            value={description}
-            onChange={this.handleInput}
-            margin='normal'
-          /><br />
+      <div className={'add-hike'}>
+        <Paper>
+          <div className={'add-hike-form-wrapper'}>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                hintText='Enter hike description'
+                errorText='This field is required'
+                error={!description}
+                hint={!description}
+                name='description'
+                label='Description'
+                value={description}
+                onChange={this.handleInput}
+                margin='normal'
+              /><br />
 
-          <TextField
-            hintText="Enter hike name"
-            errorText="This field is required"
-            name='name'
-            label='Name'
-            error={!name}
-            hint={!name}
-            value={name}
-            onChange={this.handleInput}
-            margin='normal'
-          /><br />
+              <TextField
+                hintText='Enter hike name'
+                errorText='This field is required'
+                name='name'
+                label='Name'
+                error={!name}
+                hint={!name}
+                value={name}
+                onChange={this.handleInput}
+                margin='normal'
+              /><br />
 
-          <TextField
-            hintText="Hint Text"
-            error={!admin}
-            hint={!admin}
-            errorText="This field is required"
-            name='admin'
-            label='Admin'
-            value={admin}
-            onChange={this.handleInput}
-            margin='normal'
-          /><br />
+              <TextField
+                hintText='Hint Text'
+                error={!admin}
+                hint={!admin}
+                errorText='This field is required'
+                name='admin'
+                label='Admin'
+                value={admin}
+                onChange={this.handleInput}
+                margin='normal'
+              /><br />
 
-          <Button
-            type='submit'
-            color='primary'
-            variant='raised'
-          >
+              <Button
+                type='submit'
+                color='primary'
+                variant='raised'
+              >
           Add hike
-          </Button>
-        </form>
-        </div>
-      </Paper>
+              </Button>
+            </form>
+          </div>
+        </Paper>
       </div>
 
     )

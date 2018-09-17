@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken')
 
 const createToken = function (auth) {
-  console.log('JWT********')
   return jwt.sign({
     id: auth.id
   }, 'my-secret',

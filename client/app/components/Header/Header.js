@@ -2,7 +2,7 @@ import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { Link } from 'react-router-dom'
-
+import LoginTab from '../LoginTab/LoginTab'
 import {
   Paper,
   Typography,
@@ -43,6 +43,10 @@ const Header = (props) => {
                 variant='raised'>
                 Add hike
               </Button>
+            </span>
+
+            <span style={{position: 'absolute',  right: 10}}>
+              <LoginTab/>
             </span>
 
           </Typography>

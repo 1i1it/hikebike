@@ -14,7 +14,12 @@ const UserSchema = new mongoose.Schema({
       token: String
     },
     select: false
-  }
+  },
+  fullName:{
+  type: String,
+    required: true,
+    trim: true
+},
 })
 
 UserSchema.statics.upsertFbUser = function (accessToken, refreshToken, profile, cb) {

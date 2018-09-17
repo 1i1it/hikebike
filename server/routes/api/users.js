@@ -9,14 +9,13 @@ require('../../utils/passport')()
 module.exports = (app) => {
   router.route('/api/auth/facebook')
     .post(passport.authenticate('facebook-token', { session: false }), function (req, res, next) {
-      console.log('IN POST ROUTE')
+
       if (!req.user) {
         return res.send(401, 'User Not Authenticated')
       }
       req.auth = {
         id: req.user.id
       }
-
       next()
     }, generateToken, sendToken)
 

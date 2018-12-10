@@ -17,7 +17,7 @@ const port = process.env.PORT || 8080
 // ================================================================================================
 
 // Set up Mongoose
-mongoose.connect(isDev ? config.db_dev : config.db)
+mongoose.connect(isDev ? config.db_dev : process.env.MONGODB_URI)
 mongoose.Promise = global.Promise
 
 const app = express()

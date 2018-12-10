@@ -10,7 +10,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "webpack -p --progress --profile --colors && node server",
+    "start-old": "webpack -p --progress --profile --colors && node server",
+    "start": "node server",
     "start:dev": "node server",
     "lint:fix": "standard --fix"
   },

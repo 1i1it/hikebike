@@ -34,6 +34,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "cors": "^2.8.4",
     "css-loader": "^0.28.11",
+    "event-stream": "3.3.4",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
     "express-server-utils": "^1.1.0",
